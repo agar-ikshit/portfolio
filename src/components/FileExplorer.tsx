@@ -35,7 +35,9 @@ export const FileExplorer = ({ files, onFileSelect, activeFile, level = 0 }: Fil
       case 'md':
         return <span className="file-icon">📝</span>;
       case 'js':
-        return <span className="file-icon">🟨</span>;
+        return <span className="file-icon">
+    <img src="icons/javascript.svg" alt="JavaScript" className="inline w-5 h-5" />
+  </span>;
       case 'ts':
         return <span className="file-icon">🔷</span>;
       case 'tsx':

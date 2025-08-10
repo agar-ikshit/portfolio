@@ -15,7 +15,7 @@ export const TabBar = ({ tabs, activeTab, onTabSelect, onTabClose }: TabBarProps
       case 'md':
         return '📝';
       case 'js':
-        return '🟨';
+        return <img src="icons/javascript.svg" alt="JavaScript" className="inline w-5 h-5" />;
       case 'ts':
         return '🔷';
       case 'tsx':

@@ -260,9 +260,9 @@ const renderAboutContent = (file: FileItem) => {
         </div>
 
         {/* Interests */}
-        <div className="content-card retro-border-purple border-l-4 border-neon-purple pl-4">
+        <div className="content-card border-l-4 border-neon-cyan pl-4">
           <h3 className="text-xl font-bold text-neon-pink mb-3">Interests & Passions</h3>
-          <ul className="space-y-1 text-sm text-muted-foreground">
+          <ul className="space-y-1 text-sm text-foreground">
             {developerData.interests.map((interest: string, i: number) => (
               <ListItem key={i} text={interest} color="bg-neon-pink" />
             ))}
@@ -270,9 +270,9 @@ const renderAboutContent = (file: FileItem) => {
         </div>
 
         {/* Currently Learning */}
-        <div className="content-card retro-border-green border-l-4 border-neon-purple pl-4">
+        <div className="content-card border-l-4 border-neon-cyan pl-4">
           <h3 className="text-xl font-bold text-neon-green mb-3">Currently Learning</h3>
-          <ul className="space-y-1 text-sm text-muted-foreground">
+          <ul className="space-y-1 text-sm text-foreground">
             {developerData.learning.map((item: string, i: number) => (
               <ListItem key={i} text={item} color="bg-neon-green" />
             ))}
@@ -280,9 +280,9 @@ const renderAboutContent = (file: FileItem) => {
         </div>
 
         {/* Connections */}
-        <div className="content-card retro-border-blue border-l-4 border-neon-purple pl-4">
+        <div className="content-card border-l-4 border-neon-cyan pl-4">
           <h3 className="text-xl font-bold text-neon-blue mb-3">Connections</h3>
-          <ul className="space-y-1 text-sm text-muted-foreground">
+          <ul className="space-y-1 text-sm text-foreground">
             {developerData.connections.map((conn: string, i: number) => (
               <ListItem key={i} text={conn} color="bg-neon-blue" />
             ))}
@@ -290,9 +290,9 @@ const renderAboutContent = (file: FileItem) => {
         </div>
 
         {/* Fun Facts */}
-        <div className="content-card retro-border-pink border-l-4 border-neon-purple pl-4">
+        <div className="content-card border-l-4 border-neon-cyan pl-4">
           <h3 className="text-xl font-bold text-neon-pink mb-3">Fun Facts</h3>
-          <ul className="space-y-1 text-sm text-muted-foreground">
+          <ul className="space-y-1 text-sm text-foreground">
             {developerData.funFacts.map((fact: string, i: number) => (
               <ListItem key={i} text={fact} color="bg-neon-pink" />
             ))}
@@ -328,7 +328,11 @@ const renderExperienceContent = (file: FileItem) => {
     const frontendInternDiagnokare = eval(`(${frontendDiagnokareMatch[1]})`);
     const certifications = eval(`(${certificationsMatch[1]})`);
 
-    const work = [fullStackIntern, softwareDevInternLogicspice, frontendInternDiagnokare];
+    const work = [
+  { name: "Full Stack Intern", data: fullStackIntern },
+  { name: "Software Development Intern", data: softwareDevInternLogicspice },
+  { name: "Frontend Intern", data: frontendInternDiagnokare }
+];
 
     return (
       <div className="space-y-6">
@@ -339,27 +343,27 @@ const renderExperienceContent = (file: FileItem) => {
           </h2>
           <div className="timeline">
             {work.map((job) => (
-              <div key={job.id} className="timeline-item">
+              <div key={job.data.id} className="timeline-item">
                 <div className="content-card retro-border border-l-4 border-cyan-400/70 pl-4">
                   <div className="flex justify-between items-start mb-2">
                     <h3 className="text-lg font-semibold text-neon-cyan">
-                      {job.position || job.description}
+                      {job.name}
                     </h3>
                     <span className="text-sm text-neon-pink retro-border-pink px-2 py-1 rounded">
-                      {job.duration}
+                      {job.data.duration}
                     </span>
                   </div>
                   <p className="text-neon-purple font-medium">
-                    {job.company} • {job.location}
+                    {job.data.company} • {job.data.location}
                   </p>
-                  <p className="text-muted-foreground mt-2">{job.description}</p>
+                  <p className="text-muted-foreground mt-2">{job.data.description}</p>
 
                   <div className="mt-4">
                     <h4 className="text-sm font-semibold text-neon-green mb-2">
                       Key Responsibilities:
                     </h4>
                     <ul className="space-y-1 text-sm">
-                      {job.responsibilities.map((resp: string, i: number) => (
+                      {job.data.responsibilities.map((resp: string, i: number) => (
                         <li key={i} className="flex items-start">
                           <span className="text-primary mr-2">•</span>
                           <span>{resp}</span>
@@ -369,7 +373,7 @@ const renderExperienceContent = (file: FileItem) => {
                   </div>
 
                   <div className="mt-4 flex flex-wrap gap-2">
-                    {job.technologies.map((tech: string, i: number) => (
+                    {job.data.technologies.map((tech: string, i: number) => (
                       <span
                         key={i}
                         className="text-xs retro-border-blue text-neon-blue px-2 py-1 rounded"
@@ -438,14 +442,14 @@ const renderExperienceContent = (file: FileItem) => {
   return (
     <div className="h-full bg-editor-bg overflow-auto">
       <div className="p-6">
-        <div className="flex items-center mb-4 pb-2 border-b border-border retro-border-purple">
+        <div className="flex items-center mb-4 pb-2 ">
           <span className="text-lg">
-            {file.language === 'javascript' ? '🟨' : 
+            {file.language === 'javascript' ?( <img src="/icons/javascript.svg" alt="JavaScript" className="inline w-5 h-5" />) : 
              file.language === 'markdown' ? '📝' : '📄'}
           </span>
-          <h1 className="ml-2 text-lg font-semibold text-primary">
+          {/* <h1 className="ml-2 text-lg font-semibold text-primary">
             {file.name}
-          </h1>
+          </h1> */}
           <span className="ml-auto text-xs text-muted-foreground uppercase">
             {file.language || 'text'}
           </span>

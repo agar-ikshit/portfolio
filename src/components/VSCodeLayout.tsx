@@ -265,11 +265,10 @@ const fullStackIntern = {
   id: 1,
   company: "ADRIOTEC ENGG",
   duration: "June 2024 - August 2024",
-  location: "Jaipur, India",
-  description: "Built RAG model and improved customer engagement systems",
+  location: "Gurugram, India",
+  description: "Built RAG model using LangChain and OpenAI GPT-3 to enhance customer engagement for a B2B platform.",
 
   responsibilities: [
-    "Built a Retrieval-Augmented Generation (RAG) model using LangChain and OpenAI GPT-3",
     "Integrated company-specific data to enhance customer engagement",
     "Processed 10,000+ queries with improved response accuracy by 30%",
     "Reduced query resolution time by 40%"
@@ -291,10 +290,9 @@ const softwareDevInternLogicspice = {
   company: "LOGICSPICE",
   duration: "June 2025 - July 2025",
   location: "Jaipur, India",
-  description: "Developed React.js applications for enterprise clients",
+  description: "Developed and maintained scalable, high-performance React.js applications tailored to client requirements.",
 
   responsibilities: [
-    "Developed and maintained React.js websites for 6 enterprise clients",
     "Built admin panel for real estate client management",
     "Managed 90+ property listings and user inquiries",
     "Enabled real-time status updates and content management"
@@ -313,9 +311,9 @@ const softwareDevInternLogicspice = {
 // Frontend Intern at Diagnokare Technologies
 const frontendInternDiagnokare = {
   id: 3,
-  company: "Diagnokare Technologies Pvt. Ltd.",
+  company: "Diagnokare Technologies",
   duration: "December 2023 - January 2024",
-  location: "Remote / India",
+  location: "Jaipur, India",
   description: "Worked as a frontend intern on teleradiology software for enterprise clients",
 
   responsibilities: [
