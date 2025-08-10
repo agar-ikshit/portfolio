@@ -15,7 +15,7 @@ export const Editor = ({ file, enhancedView = true }: EditorProps) => {
       <div className="h-full flex items-center justify-center bg-editor-bg">
         
         <div className="text-center space-y-4">
-          <div className="text-6xl mb-4">💻</div>
+          <div className="text-6xl mb-4"></div>
           <h2 className="text-2xl font-bold text-primary neon-glow">
             Welcome to My Portfolio
           </h2>
