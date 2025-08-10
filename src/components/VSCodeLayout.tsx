@@ -225,7 +225,7 @@ const skills = {
     technologies: [
       { name: "Git", level: 90, experience: "3 years" },
       { name: "Docker", level: 70, experience: "1 year" },
-      { name: "VS Code", level: 95, experience: "4 years" },
+      { name: "VS-Code", level: 95, experience: "4 years" },
       { name: "Linux", level: 75, experience: "2 years" },
       { name: "AWS", level: 60, experience: "6 months" },
       { name: "Figma", level: 80, experience: "2 years" }
