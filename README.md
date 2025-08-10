@@ -1,73 +1,57 @@
-# Welcome to your Lovable project
+# 🧑‍💻 Ikshit Agarwal's Portfolio
 
-## Project info
+Welcome to my personal portfolio repository! This project showcases my skills, projects, and experiences as a developer. It's built using modern web technologies to provide a seamless and interactive experience.
 
-**URL**: https://lovable.dev/projects/26ef13de-c191-4a97-bf53-833d6532cf3f
+## 🚀 Features
 
-## How can I edit this code?
+- **Responsive Design**: Optimized for both desktop and mobile views.
+- **Interactive UI**: Engaging animations and smooth transitions.
+- **VSCode-Inspired Interface**: Clean and familiar layout modeled after Visual Studio Code, including sidebar, tabs, and editor-style presentation for a developer-friendly experience.
+- **Project Showcases**: Detailed presentations of my work and contributions.
+- **Contact Form**: Easy way to get in touch with me.
 
-There are several ways of editing your application.
 
-**Use Lovable**
+## 🛠️ Technologies Used
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/26ef13de-c191-4a97-bf53-833d6532cf3f) and start prompting.
+- **Frontend**: React.js with Vite
+- **Styling**: Tailwind CSS
+- **Icons**: Custom SVG icons and Lucide React
+- **Deployment**: Vercel
 
-Changes made via Lovable will be committed automatically to this repo.
+## 📂 Project Structure
 
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
 ```
 
-**Edit a file directly in GitHub**
+/public
+/icons          # Custom SVG icons
+/src
+/components     # Reusable UI components
+/assets         # Images and other assets
+.gitignore        # Git ignore file
+index.html        # Main HTML file
+package.json      # Project dependencies and scripts
+tailwind.config.ts # Tailwind CSS configuration
+vite.config.ts    # Vite build configuration
+README.md         # Project documentation
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+````
 
-**Use GitHub Codespaces**
+## 📌 Live Demo
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+Check out the live demo of my portfolio here:
 
-## What technologies are used for this project?
+[ikshit's portfolio](https://ikshit-portfolio.vercel.app/)
 
-This project is built with:
+## 📄 License
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+This project is licensed under the MIT License.
 
-## How can I deploy this project?
+---
 
-Simply open [Lovable](https://lovable.dev/projects/26ef13de-c191-4a97-bf53-833d6532cf3f) and click on Share -> Publish.
+Thank you for checking out my portfolio!
+— Ikshit Agarwal
 
-## Can I connect a custom domain to my Lovable project?
+```
 
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+Let me know if you want it customized further!
+```
