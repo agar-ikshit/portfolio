@@ -45,7 +45,7 @@ Check out the live demo of my portfolio here:
 Feel free to reach out:
 
 * **Email**: [ikshitagarwa@gmail.com](mailto:ikshitagarwa@gmail.com)
-* **LinkedIn**: [linkedin.com/in/ikshitagarwal](www.linkedin.com/in/ikshit12)
+* **LinkedIn**: [linkedin.com/in/ikshitagarwal]([www.linkedin.com/in/ikshit12](https://www.linkedin.com/in/ikshit-agarwal-227383258/))
 * **GitHub**: [github.com/agar-ikshit](https://github.com/agar-ikshit)
 * **LeetCode**: [leetcode.com/u/dullescence/](https://leetcode.com/u/dullescence/)
 
