@@ -38,7 +38,7 @@ README.md         # Project documentation
 
 Check out the live demo of my portfolio here:
 
-[ikshit's portfolio]([https://portfolio-alpha-orpin-69.vercel.app](https://ikshit-portfolio.vercel.app/))
+[ikshit's portfolio](https://ikshit-portfolio.vercel.app/)
 
 ## 📬 Contact Me
 
