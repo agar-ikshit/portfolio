@@ -115,7 +115,7 @@ export const ActivityBar = ({ onToggleSidebar, enhancedView, onEnhancedViewChang
         enhancedView={enhancedView}
         onEnhancedViewChange={onEnhancedViewChange}
       />
-       {showMessageModal && <MessageModal onClose={() => setShowMessageModal(false)} />}
+       {showMessageModal && <MessageModal isOpen={showMessageModal} onClose={() => setShowMessageModal(false)} />}
     </div>
   );
 };

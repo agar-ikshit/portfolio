@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import emailjs from "@emailjs/browser";
+import {X} from "lucide-react";
 
 interface MessageModalProps {
   onClose: () => void;
@@ -34,7 +35,7 @@ export function MessageModal({ onClose }: MessageModalProps) {
       .then(
         () => {
           setLoading(false);
-          setFeedback("Message sent successfully! 🎉");
+          setFeedback("Message sent successfully!");
           setFormData({ user_name: "", user_email: "", message: "" });
         },
         (error) => {
@@ -51,16 +52,17 @@ export function MessageModal({ onClose }: MessageModalProps) {
       onClick={onClose}
     >
       <div
-        className="bg-[#12101f] border border-pink-500 rounded-lg p-6 w-96 text-cyan-400 shadow-[0_0_15px_#00fff7]"
+        className="relative bg-[#12101f] border border-pink-500 rounded-lg p-6 w-96 text-cyan-400 shadow-[0_0_15px_#00fff7]"
         onClick={(e) => e.stopPropagation()}
       >
-        <button
-          onClick={onClose}
-          className="text-neon-pink text-2xl font-bold float-right"
-          aria-label="Close modal"
-        >
-          ×
-        </button>
+ <button
+  onClick={() => onClose()}
+  className="absolute top-2 right-2 w-6 h-6 text-pink-500 hover:text-pink-400 p-0.5 rounded"
+  aria-label="Close modal"
+  type="button"
+>
+  <X size={24} />
+</button>
         <h2 className="text-2xl mb-4 font-bold neon-glow">Send Me a Message</h2>
 
         <form onSubmit={handleSubmit} className="space-y-4">
