@@ -6,8 +6,10 @@ Welcome to my personal portfolio repository! This project showcases my skills, p
 
 - **Responsive Design**: Optimized for both desktop and mobile views.
 - **Interactive UI**: Engaging animations and smooth transitions.
+- **VSCode-Inspired Interface**: Clean and familiar layout modeled after Visual Studio Code, including sidebar, tabs, and editor-style presentation for a developer-friendly experience.
 - **Project Showcases**: Detailed presentations of my work and contributions.
 - **Contact Form**: Easy way to get in touch with me.
+
 
 ## 🛠️ Technologies Used
 
@@ -39,15 +41,6 @@ README.md         # Project documentation
 Check out the live demo of my portfolio here:
 
 [ikshit's portfolio](https://ikshit-portfolio.vercel.app/)
-
-## 📬 Contact Me
-
-Feel free to reach out:
-
-* **Email**: [ikshitagarwa@gmail.com](mailto:ikshitagarwa@gmail.com)
-* **LinkedIn**: [linkedin.com/in/ikshitagarwal]([www.linkedin.com/in/ikshit12](https://www.linkedin.com/in/ikshit-agarwal-227383258/))
-* **GitHub**: [github.com/agar-ikshit](https://github.com/agar-ikshit)
-* **LeetCode**: [leetcode.com/u/dullescence/](https://leetcode.com/u/dullescence/)
 
 ## 📄 License
 
