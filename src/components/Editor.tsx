@@ -189,11 +189,19 @@ const renderProjectsContent = (file: FileItem) => {
     laserTag.link = "https://lasertag.csivit.com/";
     cryptoArbitrage.link = "https://github.com/agar-ikshit/arbitrage";
 
-    const projects = [dementiaDiary, cryptoArbitrage, taskManagement, laserTag];
+    const uniqueProjects = [
+  dementiaDiary,
+  cryptoArbitrage,
+  taskManagement,
+  laserTag,
+].filter((proj, index, self) => 
+  index === self.findIndex(p => p.id === proj.id)
+);
+
 
     return (
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        {projects.map((project) => (
+        {uniqueProjects.map((project) => (
           <div
             key={project.id}
             className="content-card retro-border p-5 relative"
