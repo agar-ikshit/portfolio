@@ -127,6 +127,25 @@ const dementiaDiary = {
     ],
   }
 };
+// Crypto Arbitrage - Multi-Exchange Data Collector
+const cryptoArbitrage = {
+  id: 2,
+  name: "Crypto Arbitrage – Multi-Exchange Data Collector",
+  link: "https://github.com/agar-ikshit/arbitrage",
+  type: "Self-project",
+  role: "Backend Developer",
+  description: {
+    summary:
+      "Developed an automated backend system to fetch real-time cryptocurrency prices and quantities from multiple exchanges, calculate arbitrage opportunities, and store the results in Supabase for analysis.",
+    details: [
+      "Integrated APIs from Binance, Coinbase, Kraken, CoinSwitch, and Independent Reserve, standardizing responses for consistent storage and processing.",
+      "Configured GitHub Actions with scheduled cron jobs to execute scripts periodically, enabling fully automated data collection with zero manual intervention.",
+      "Optimized Python scripts for low-latency API calls, reducing average fetch-to-store time to under 2 seconds per exchange.",
+      "Designed a modular and scalable architecture to easily add support for new exchanges in the future."
+    ],
+  },
+};
+
 
 // Task Management - Web App for assigning and marking tasks
 const taskManagement = {
@@ -373,6 +392,24 @@ export const VSCodeLayout = () => {
   const [openTabs, setOpenTabs] = useState<FileItem[]>([fileStructure[0]]);
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
   const [enhancedView, setEnhancedView] = useState(true);
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 768) {
+        setSidebarCollapsed(true);
+      } else {
+        setSidebarCollapsed(false);
+      }
+    };
+
+    handleResize(); 
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+
+
+
 
   const openFile = (file: FileItem) => {
     setActiveFile(file);

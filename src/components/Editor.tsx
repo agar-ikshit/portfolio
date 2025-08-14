@@ -174,18 +174,22 @@ const renderProjectsContent = (file: FileItem) => {
     const dementiaMatch = file.content.match(/const dementiaDiary\s*=\s*({[\s\S]*?});/);
     const taskManagementMatch = file.content.match(/const taskManagement\s*=\s*({[\s\S]*?});/);
     const laserTagMatch = file.content.match(/const laserTag\s*=\s*({[\s\S]*?});/);
+    const cryptoArbitrageMatch = file.content.match(/const cryptoArbitrage\s*=\s*({[\s\S]*?});/);
 
-    if (!dementiaMatch || !taskManagementMatch || !laserTagMatch) return renderContent();
+    if (!dementiaMatch || !taskManagementMatch || !laserTagMatch || !cryptoArbitrageMatch)
+      return renderContent();
 
     const dementiaDiary = eval(`(${dementiaMatch[1]})`);
     const taskManagement = eval(`(${taskManagementMatch[1]})`);
     const laserTag = eval(`(${laserTagMatch[1]})`);
+    const cryptoArbitrage = eval(`(${cryptoArbitrageMatch[1]})`);
 
     dementiaDiary.link = "https://dementia-diary-frontend.vercel.app/";
     taskManagement.link = "https://torus-task-management.vercel.app/";
     laserTag.link = "https://lasertag.csivit.com/";
+    cryptoArbitrage.link = "https://github.com/agar-ikshit/arbitrage";
 
-    const projects = [dementiaDiary, taskManagement, laserTag];
+    const projects = [dementiaDiary, cryptoArbitrage, taskManagement, laserTag];
 
     return (
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
@@ -195,7 +199,7 @@ const renderProjectsContent = (file: FileItem) => {
             className="content-card retro-border p-5 relative"
           >
             {/* Left accent bar */}
-            <div className="absolute left-0 top-0 h-full w-1 bg-neon-cyan  opacity-70 z-10"></div>
+            <div className="absolute left-0 top-0 h-full w-1 bg-neon-cyan opacity-70 z-10"></div>
 
             <div className="flex justify-between items-start mb-3">
               <h3 className="text-lg font-semibold text-neon-cyan">{project.name}</h3>
