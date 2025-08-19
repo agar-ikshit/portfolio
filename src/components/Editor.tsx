@@ -1,15 +1,86 @@
 import { MatrixBackground } from './MatrixBackground';
+import { useEffect,useState,useRef } from 'react';
 import { FileItem } from './VSCodeLayout';
 import ReactMarkdown from "react-markdown";
 import * as simpleIcons from "simple-icons";
 import rehypeRaw from 'rehype-raw';
 
+interface FileItem {
+  name: string;
+  content?: string;
+  language?: string;
+}
 interface EditorProps {
   file: FileItem | null;
   enhancedView?: boolean;
 }
 
 export const Editor = ({ file, enhancedView = true }: EditorProps) => {
+ const [currentFile, setCurrentFile] = useState<FileItem | null>(null);
+  const [isMounted, setIsMounted] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const contentRef = useRef<HTMLDivElement>(null);
+
+  // Force complete remount when file changes
+  useEffect(() => {
+    if (file && file !== currentFile) {
+      setIsMounted(false);
+      setCurrentFile(file);
+      
+      // Small delay to ensure DOM cleanup
+      setTimeout(() => {
+        setIsMounted(true);
+        
+        // Reset scroll and force layout recalculation
+        if (containerRef.current) {
+          containerRef.current.scrollTop = 0;
+          containerRef.current.scrollLeft = 0;
+          
+          // Force reflow on mobile
+          containerRef.current.style.display = 'none';
+          containerRef.current.offsetHeight; // Trigger reflow
+          containerRef.current.style.display = 'block';
+        }
+      }, 50);
+    } else if (file === currentFile && !isMounted) {
+      setIsMounted(true);
+    }
+  }, [file, currentFile, isMounted]);
+
+  // Fix mobile viewport issues
+  useEffect(() => {
+    if (isMounted && containerRef.current) {
+      const container = containerRef.current;
+      
+      // Force mobile browsers to recalculate layout
+      const forceReflow = () => {
+        container.style.transform = 'translateZ(0)';
+        container.style.willChange = 'transform';
+        
+        setTimeout(() => {
+          container.style.transform = '';
+          container.style.willChange = '';
+        }, 100);
+      };
+      
+      forceReflow();
+      
+      // Handle orientation changes
+      const handleResize = () => {
+        setTimeout(forceReflow, 100);
+      };
+      
+      window.addEventListener('resize', handleResize);
+      window.addEventListener('orientationchange', handleResize);
+      
+      return () => {
+        window.removeEventListener('resize', handleResize);
+        window.removeEventListener('orientationchange', handleResize);
+      };
+    }
+  }, [isMounted]);
+
+
   if (!file) {
     return (
       <div className="h-full flex items-center justify-center bg-editor-bg">
@@ -64,11 +135,11 @@ const highlightSyntax = (code) => {
     // For JavaScript files, add syntax highlighting
     if (file.language === 'javascript') {
       return (
-        <pre className="text-sm leading-relaxed whitespace-pre-wrap break-words">
+        <pre className="text-sm sm:text-xs leading-relaxed whitespace-pre-wrap break-words">
           <code className="text-editor-foreground">
             {file.content.split('\n').map((line, index) => (
               <div key={index} className="flex">
-                <span className="w-12 text-right pr-4 text-muted-foreground select-none border-r border-border mr-4">
+                <span className="w-12 sm:w-8 text-right pr-4 text-muted-foreground select-none border-r border-border mr-4">
                   {index + 1}
                 </span>
                 <span 
@@ -85,31 +156,60 @@ const highlightSyntax = (code) => {
     }
 
     // For markdown files
-    if (file.language === 'markdown') {
-      return (
-        <div className="prose prose-invert max-w-none markdown-body">
-          
-              <ReactMarkdown
-  rehypePlugins={[rehypeRaw]}
-  components={{
-    h1: ({node, ...props}) => <h1 {...props} />
-  }}
->
-  {file.content}
-</ReactMarkdown>
-              
-           
-          
-        </div>
-      );
-    }
+    if (file.language === "markdown") {
+  return (
+    <div className="prose prose-invert max-w-none markdown-body">
+      <div className="overflow-x-auto">
+        <ReactMarkdown
+          rehypePlugins={[rehypeRaw]}
+          components={{
+            h1: ({ node, ...props }) => <h1 {...props} />,
+            table: ({ node, ...props }) => (
+              <div style={{ overflowX: "auto" }}>
+                <table
+                  style={{
+                    borderCollapse: "collapse",
+                    width: "100%",
+                    minWidth: "500px",
+                  }}
+                  {...props}
+                />
+              </div>
+            ),
+            th: ({ node, ...props }) => (
+              <th
+                style={{
+                  border: "1px solid #ccc",
+                  padding: "8px",
+                  textAlign: "left",
+                }}
+                {...props}
+              />
+            ),
+            td: ({ node, ...props }) => (
+              <td
+                style={{
+                  border: "1px solid #ccc",
+                  padding: "8px",
+                }}
+                {...props}
+              />
+            ),
+          }}
+        >
+          {file.content}
+        </ReactMarkdown>
+      </div>
+    </div>
+  );
+}
 
     return (
-      <pre className="text-sm leading-relaxed whitespace-pre-wrap break-words">
+      <pre className="text-sm sm:text-xs leading-relaxed whitespace-pre md:whitespace-pre-wrap break-words">
         <code className="text-editor-foreground">
           {file.content.split('\n').map((line, index) => (
             <div key={index} className="flex">
-              <span className="w-12 text-right pr-4 text-muted-foreground select-none border-r border-border mr-4">
+              <span className="w-12 sm:w-8 text-right pr-4 text-muted-foreground select-none border-r border-border mr-4">
                 {index + 1}
               </span>
               <span className="flex-1 break-words">{line}</span>
@@ -129,7 +229,7 @@ const renderSkillsContent = (file: FileItem) => {
     const skillsData = eval(`(${match[1]})`);
 
     return (
-      <div className="space-y-6">
+      <div className="space-y-6 min-w-0">
         {Object.entries(skillsData).map(([key, category]: [string, any]) => (
           <div key={key} className="relative content-card retro-border">
             {/* Left neon accent */}
@@ -262,7 +362,7 @@ const renderAboutContent = (file: FileItem) => {
     );
 
     return (
-      <div className="space-y-6">
+      <div className="space-y-6 min-w-0">
 
         {/* Basic Info */}
         <div className="content-card retro-border-cyan">
@@ -347,7 +447,7 @@ const renderExperienceContent = (file: FileItem) => {
 ];
 
     return (
-      <div className="space-y-6">
+      <div className="space-y-6 min-w-0">
         {/* Work Experience */}
         <div>
           <h2 className="text-xl font-bold text-neon-green mb-4">
@@ -434,6 +534,9 @@ const renderExperienceContent = (file: FileItem) => {
 
   // Enhanced content renderer with visual components
   const renderEnhancedContent = (file: FileItem) => {
+    
+  
+ 
     if (!enhancedView || !file.content) {
       return renderContent();
     }
@@ -452,7 +555,7 @@ const renderExperienceContent = (file: FileItem) => {
   };
 
   return (
-    <div className="h-full bg-editor-bg overflow-auto">
+    <div  key={`${file.name}`} className="h-full bg-editor-bg overflow-y-auto overflow-x-hidden relative min-w-0">
       <div className="p-6">
         <div className="flex items-center mb-4 pb-2 ">
           <span className="text-lg">

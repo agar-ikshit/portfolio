@@ -31,32 +31,35 @@ I enjoy exploring new technologies and have worked on projects ranging from RAG-
 ---
 **Education**
 
-<table style="border-collapse: collapse; width: 100%;">
-  <tr>
-    <th style="border: 1px solid #ccc; padding: 8px;">Qualification</th>
-    <th style="border: 1px solid #ccc; padding: 8px;">Institution</th>
-    <th style="border: 1px solid #ccc; padding: 8px;">Score / CGPA</th>
-    <th style="border: 1px solid #ccc; padding: 8px;">Year</th>
-  </tr>
-  <tr>
-    <td style="border: 1px solid #ccc; padding: 8px;">B.Tech – CSE Core</td>
-    <td style="border: 1px solid #ccc; padding: 8px;">VIT, Vellore</td>
-    <td style="border: 1px solid #ccc; padding: 8px;">CGPA: 8.74</td>
-    <td style="border: 1px solid #ccc; padding: 8px;">Sep 2022 – Apr 2026</td>
-  </tr>
-  <tr>
-    <td style="border: 1px solid #ccc; padding: 8px;">Senior Secondary (CBSE)</td>
-    <td style="border: 1px solid #ccc; padding: 8px;">Maheshwari Public School</td>
-    <td style="border: 1px solid #ccc; padding: 8px;">92.3%</td>
-    <td style="border: 1px solid #ccc; padding: 8px;">2022</td>
-  </tr>
-  <tr>
-    <td style="border: 1px solid #ccc; padding: 8px;">Secondary (CBSE)</td>
-    <td style="border: 1px solid #ccc; padding: 8px;">Maheshwari Public School</td>
-    <td style="border: 1px solid #ccc; padding: 8px;">97.01%</td>
-    <td style="border: 1px solid #ccc; padding: 8px;">2020</td>
-  </tr>
-</table>
+<div style="overflow-x:auto; -webkit-overflow-scrolling: touch;">
+  <table style="border-collapse: collapse; width: 100%; min-width: 500px;">
+    <tr>
+      <th style="border: 1px solid #ccc; padding: 8px;">Qualification</th>
+      <th style="border: 1px solid #ccc; padding: 8px;">Institution</th>
+      <th style="border: 1px solid #ccc; padding: 8px;">Score / CGPA</th>
+      <th style="border: 1px solid #ccc; padding: 8px;">Year</th>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #ccc; padding: 8px;">B.Tech – CSE Core</td>
+      <td style="border: 1px solid #ccc; padding: 8px;">VIT, Vellore</td>
+      <td style="border: 1px solid #ccc; padding: 8px;">CGPA: 8.74</td>
+      <td style="border: 1px solid #ccc; padding: 8px;">Sep 2022 – Apr 2026</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #ccc; padding: 8px;">Senior Secondary (CBSE)</td>
+      <td style="border: 1px solid #ccc; padding: 8px;">Maheshwari Public School</td>
+      <td style="border: 1px solid #ccc; padding: 8px;">92.3%</td>
+      <td style="border: 1px solid #ccc; padding: 8px;">2022</td>
+    </tr>
+    <tr>
+      <td style="border: 1px solid #ccc; padding: 8px;">Secondary (CBSE)</td>
+      <td style="border: 1px solid #ccc; padding: 8px;">Maheshwari Public School</td>
+      <td style="border: 1px solid #ccc; padding: 8px;">97.01%</td>
+      <td style="border: 1px solid #ccc; padding: 8px;">2020</td>
+    </tr>
+  </table>
+</div>
+
 
 ---
 <br/><br/>
@@ -129,7 +132,7 @@ const dementiaDiary = {
 };
 // Crypto Arbitrage - Multi-Exchange Data Collector
 const cryptoArbitrage = {
-  id: 2,
+  id: 4,
   name: "Crypto Arbitrage – Multi-Exchange Data Collector",
   link: "https://github.com/agar-ikshit/arbitrage",
   type: "Self-project",
@@ -388,10 +391,17 @@ export {
 ];
 
 export const VSCodeLayout = () => {
+  const [editorKey, setEditorKey] = useState(0);
+
+
   const [activeFile, setActiveFile] = useState<FileItem | null>(fileStructure[0]);
   const [openTabs, setOpenTabs] = useState<FileItem[]>([fileStructure[0]]);
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
   const [enhancedView, setEnhancedView] = useState(true);
+  useEffect(() => {
+  // Every time the file changes, force a fresh remount
+  setEditorKey(prev => prev + 1);
+}, [activeFile?.name]);
 
   useEffect(() => {
     const handleResize = () => {
@@ -428,7 +438,7 @@ export const VSCodeLayout = () => {
   };
 
   return (
-    <div className="h-screen flex flex-col bg-background font-mono relative">
+    <div className="h-screen flex flex-col bg-background font-mono relative overflow-hidden">
       {/* Title Bar */}
       <div className="h-8 bg-vscode-titleBar border-b border-border retro-border flex items-center justify-between px-4 relative z-10">
         <div className="flex items-center space-x-2">
@@ -476,7 +486,7 @@ export const VSCodeLayout = () => {
           
           <div className="flex-1 overflow-auto">
             
-            <Editor file={activeFile} enhancedView={enhancedView} />
+            <Editor key={editorKey} file={activeFile} enhancedView={enhancedView} />
           </div>
           
         </div>

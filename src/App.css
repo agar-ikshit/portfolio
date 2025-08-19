@@ -3,6 +3,27 @@
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+  overflow-x: hidden;
+}
+
+
+.h-full {
+  width: 100vw;
+  overflow-x: hidden;
+}
+.bg-editor-bg {
+  overflow-x: hidden;
+  min-width: 0;
+  max-width: 100%;
+}
+.grid {
+  min-width: 0;
+}
+
+.markdown-body {
+  min-width: 0;
+  word-break: break-word;
+  overflow-wrap: anywhere;
 }
 
 .logo {
