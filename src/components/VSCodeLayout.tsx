@@ -284,7 +284,7 @@ export { skills, getSkillLevel };`
         language: 'javascript',
         content: `// Full-Stack Intern at ADRIOTEC ENGG
 const fullStackIntern = {
-  id: 1,
+  id: 2,
   company: "ADRIOTEC ENGG",
   duration: "June 2024 - August 2024",
   location: "Gurugram, India",
@@ -308,7 +308,7 @@ const fullStackIntern = {
 
 // Software Dev Intern at LOGICSPICE
 const softwareDevInternLogicspice = {
-  id: 2,
+  id: 3,
   company: "LOGICSPICE",
   duration: "June 2025 - July 2025",
   location: "Jaipur, India",
@@ -330,27 +330,36 @@ const softwareDevInternLogicspice = {
   ]
 };
 
-// Frontend Intern at Diagnokare Technologies
-const frontendInternDiagnokare = {
-  id: 3,
-  company: "Diagnokare Technologies",
-  duration: "December 2023 - January 2024",
-  location: "Jaipur, India",
-  description: "Worked as a frontend intern on teleradiology software for enterprise clients",
+// Software Developer at ION
+const softwareDeveloperION = {
+  id: 1,
+  company: "ION",
+  duration: "January 2026 - Present",
+  location: "Noida, India",
+  description:
+    "Working as a software developer on Fidessa, an institutional trading platform, focusing on C++ backend development and exchange connectivity",
 
   responsibilities: [
-    "Developed interactive and responsive user interfaces using Next.js, React, and TypeScript",
-    "Collaborated with the frontend team to improve the teleradiology platform used by 6 enterprise clients",
-    "Ensured codebase reliability through testing and best practices",
-    "Implemented modern web development principles for improved user experience"
+    "Develop and maintain C++ backend components for Fidessa's exchange gateways",
+    "Implement exchange-specific functionality to support reliable communication between trading systems and financial exchanges",
+    "Handle FIX protocol messages and interpret exchange specifications to implement trading requirements",
+    "Work with multiple database tables to retrieve, update, and maintain instrument and configuration data",
+    "Investigate and debug exchange connectivity issues, message handling, and instrument-related discrepancies",
+    "Collaborate with the team to test changes and ensure reliable integration with exchange systems"
   ],
 
-  technologies: ["Next.js", "React", "TypeScript", "CSS"],
+  technologies: [
+    "C++",
+    "FIX Protocol",
+    "SQL",
+    "Linux",
+    "Trading Systems"
+  ],
 
   achievements: [
-    "Successfully delivered key UI components within deadlines",
-    "Enhanced usability and visual consistency across the platform",
-    "Improved frontend performance and code maintainability"
+    "Contribute to the development and maintenance of backend components for an institutional trading platform",
+    "Gain hands-on experience with exchange connectivity, financial messaging standards, and production-oriented software development",
+    "Develop a deeper understanding of database-driven trading workflows and exchange-specific requirements"
   ]
 };
 
