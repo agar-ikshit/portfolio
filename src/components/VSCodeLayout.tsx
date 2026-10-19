@@ -388,7 +388,7 @@ const certifications = [
 export {
   fullStackIntern,
   softwareDevInternLogicspice,
-  frontendInternDiagnokare,
+  softwareDeveloperION,
   certifications
 };
 
